@@ -18,6 +18,7 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
   
   bad <- is.na(data_slice)
   m_mean <- mean(data_slice[!bad])
-  print(m_mean)
+  
+  m_mean
 }
 
