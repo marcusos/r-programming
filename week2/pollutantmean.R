@@ -1,6 +1,7 @@
 pollutantmean <- function(directory, pollutant, id = 1:332) {
 
-  m_mean <- 0
+  data <- data.frame("Date"=as.Date(character()),
+              "sulfate"=numeric(), "nitrate"=numeric(), "id"=numeric())  
 
   for(i in id) {
 
@@ -9,15 +10,14 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     
     data_a <- read.csv(file_path)
     
-    fina_data <- rbind(a, b)
+    data <- rbind(data, data_a)
     
   }
   
   data_slice <- data[[pollutant]]
   
   bad <- is.na(data_slice)
-  m_mean <- m_mean + mean(data_slice[!bad])
-  
-  m_mean/length(id)
+  m_mean <- mean(data_slice[!bad])
+  print(m_mean)
 }
 
